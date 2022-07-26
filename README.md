@@ -1,11 +1,13 @@
-# boilerplate-typescript-fastify-clean-architecture
-The repository is template for starting project with "boilerplate-typescript-fastify-clean-architecture" by develop CRUD for TODO APIs.
+# ms-node-template
 
-note: 
+The repository is template for starting project with "typescript-fastify" based on clean architecture by develop CRUD for TODO APIs.
+
+TODO list:
+
 - Explain about defination of clean architecture will come soon.
-- Now, testing coverage is not 100%.
+- Increase code coverage.
 
-### Installation - Todo APIs
+### Install dependencies
 
 ```bash
 npm install

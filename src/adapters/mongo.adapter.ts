@@ -1,13 +1,11 @@
 import { connect, connection, Connection } from 'mongoose'
+
 class MongoAdapter {
   private _database: Connection
 
   constructor(username: string, password: string, host: string, post: number, dbName: string, authName: string) {
     // This uri use for create connection mongo on localhost without docker container. 
-    connect(`mongodb://${host}:${post}/${dbName}?authSource=${authName}`, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
+    connect(`mongodb://${host}:${post}/${dbName}?authSource=${authName}`, {})
     // connect(`mongodb://${username}:${password}@${host}:${post}/${dbName}?authSource=${authName}`, {
     //   useNewUrlParser: true,
     //   useUnifiedTopology: true,

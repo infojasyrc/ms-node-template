@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate-typescript-fastify-clean-architecture",
+  "name": "ms-node-template",
   "version": "1.0.0",
   "description": "Template for starting backend with typescript + fastify + clean architecture",
   "main": "dist/server.js",
@@ -15,42 +15,42 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aslupin/boilerplate-typescript-fastify-clean-architecture.git"
+    "url": "git+https://github.com/infojasyrc/ms-node-template.git"
   },
-  "author": "poonsht",
+  "author": "infojasyrc",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/aslupin/boilerplate-typescript-fastify-clean-architecture/issues"
+    "url": "https://github.com/infojasyrc/ms-node-template/issues"
   },
-  "homepage": "https://github.com/aslupin/boilerplate-typescript-fastify-clean-architecture#readme",
+  "homepage": "https://github.com/infojasyrc/ms-node-template#readme",
   "dependencies": {
-    "@sentry/node": "^5.15.5",
-    "@types/amqplib": "^0.5.13",
-    "amqplib": "^0.5.6",
-    "axios": "^0.19.2",
-    "config-yaml": "^1.1.4",
-    "dotenv": "^8.2.0",
-    "fastify": "^3.7.0",
-    "fastify-jwt": "^2.1.3",
-    "fastify-plugin": "^3.0.0",
-    "mongoose": "^5.9.10",
-    "ts-node": "^8.9.1"
+    "@sentry/node": "^7.7.0",
+    "@types/amqplib": "^0.8.2",
+    "amqplib": "^0.10.0",
+    "axios": "^0.27.2",
+    "config-yaml": "^1.1.6",
+    "dotenv": "^16.0.1",
+    "fastify": "^4.2.1",
+    "@fastify/jwt": "^6.3.1",
+    "fastify-plugin": "^4.0.0",
+    "mongoose": "^6.4.5",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.6",
-    "@babel/preset-env": "^7.9.6",
-    "@babel/preset-typescript": "^7.9.0",
-    "@types/body-parser": "^1.19.0",
+    "@babel/core": "^7.18.9",
+    "@babel/preset-env": "^7.18.9",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/body-parser": "^1.19.2",
     "@types/config-yaml": "^1.1.1",
-    "@types/jest": "^25.2.1",
-    "@types/mongoose": "^5.7.14",
-    "@types/node": "^13.13.4",
-    "babel-jest": "^26.0.0",
-    "jest": "^26.0.0",
-    "mock-express-response": "^0.2.2",
-    "newman": "^5.0.1",
-    "nodemon": "^2.0.3",
-    "typescript": "^3.9.3"
+    "@types/jest": "^28.1.6",
+    "@types/mongoose": "^5.11.96",
+    "@types/node": "^18.0.6",
+    "babel-jest": "^28.1.3",
+    "jest": "^28.1.3",
+    "mock-express-response": "^0.3.0",
+    "newman": "^5.3.2",
+    "nodemon": "^2.0.19",
+    "typescript": "^4.7.4"
   },
   "jest": {
     "coveragePathIgnorePatterns": [

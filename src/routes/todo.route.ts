@@ -1,7 +1,10 @@
 import { FastifyInstance, FastifyPluginOptions } from 'fastify'
+
 import TodoUsecase from '../usecase/todo.usecase'
 import responseHandler from '../helper/response.handler'
+
 import { createDTO, updateDTO, deleteDTO } from '../entities/dtos/todo.dto'
+
 import * as Validator from '../helper/validate.helper'
 
 class TodoRoutes {
@@ -54,7 +57,7 @@ class TodoRoutes {
 
     fastify.delete(`/delete`, { preValidation: [(fastify as any).authenticate] }, async (request, reply) => {
       responseHandler(async () => {
-        console.log(request.user)
+        // console.log(request.user)
         const data = await TodoUsecase.deleteTodo(request.body as deleteDTO)
         return data
       }, reply)

@@ -49,7 +49,7 @@ class TodoRepository {
         ...dataUpdate,
       },
     })
-    return result.n as number
+    return result.modifiedCount as number
   }
 
   public async deleteTodo(_id: string): Promise<number> {
