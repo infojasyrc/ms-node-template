@@ -7,72 +7,65 @@ jest.mock('amqplib')
 describe('RabbitMQ adapter', () => {
   beforeEach(() => {
     jest.resetModules()
-    jest.resetModuleRegistry()
   })
 
-  test('RabbitMQ get instance:instance not exist (getInstance method)', async () => {
-    amqp.connect = jest.fn().mockResolvedValue(123)
-    const queue = await RabbitMQAdapter.getInstance()
-    expect(queue.constructor).toBeTruthy()
+  afterEach(() => {
+    jest.resetAllMocks()
+  })
+
+  const connection = {
+    username: 'root',
+    password: 'root',
+    host: 'localhost',
+    port: 123,
+  }
+
+  test('RabbitMQ get instance:instance not exist and throw an error', () => {
+    expect(() => {
+      RabbitMQAdapter.getInstance()
+    }).toThrowError(/no data for connection/i)
   })
 
   test('RabbitMQ initial instance by getInstance', async () => {
     amqp.connect = jest.fn().mockResolvedValue(123)
 
-    const connection = {
-      username: 'root',
-      password: 'root',
-      host: 'localhost',
-      port: 123,
-    }
     const queue = await RabbitMQAdapter.getInstance(connection)
     expect(queue.constructor).toBeTruthy()
   })
 
-  test('RabbitMQ get instance:instance exist (new operand)', async () => {
+  test('RabbitMQ get instance: same instance', async () => {
     amqp.connect = jest.fn().mockResolvedValue(123)
 
-    const connection = {
-      username: 'root',
-      password: 'root',
-      host: 'localhost',
-      port: 123,
-    }
-    await RabbitMQAdapter.getInstance(connection)
-    const queue = await new RabbitMQAdapter()
+    const queue = await RabbitMQAdapter.getInstance(connection)
+
+    const qInstance = await RabbitMQAdapter.getInstance()
+    expect(queue.constructor).toBeTruthy()
+    expect(qInstance).toBe(queue)
+  })
+
+  test('RabbitMQ new instance', async () => {
+    amqp.connect = jest.fn().mockResolvedValue(123)
+
+    const queue = await new RabbitMQAdapter(connection)
     expect(queue.constructor).toBeTruthy()
   })
 
   test('RabbitMQ connect error', async () => {
-    const expectedError = new Error('error something')
-    amqp.connect = jest.fn().mockRejectedValue(new Error('error something'))
-
-    const connection = {
-      username: 'root',
-      password: 'root',
-      host: 'localhost',
-      port: 123,
-    }
+    const expectedError = new Error('something ocurred')
+    amqp.connect = jest.fn().mockReturnValue(Promise.reject(expectedError))
 
     try {
       await RabbitMQAdapter.getInstance(connection)
     } catch (error) {
-      expect(error).toThrow(expectedError)
+      expect(error).toBe(expectedError)
     }
   })
 
   test('RabbitMQ instance exist', async () => {
     amqp.connect = jest.fn().mockResolvedValue(123)
 
-    const connection = {
-      username: 'root',
-      password: 'root',
-      host: 'localhost',
-      port: 123,
-    }
     await RabbitMQAdapter.getInstance(connection)
     const queue = await RabbitMQAdapter.getInstance()
     expect(queue.constructor).toBeTruthy()
   })
-
 })

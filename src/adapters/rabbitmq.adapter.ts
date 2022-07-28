@@ -1,6 +1,8 @@
 import amqp, { Connection, Channel } from 'amqplib'
+
 import { ConnectionInfoQueueDTO, InfoQueueDTO } from '../entities/dtos/queue.dto'
 import { TodoInterface } from '../entities/interfaces/data/todo.interface'
+
 import config from '../config/config'
 
 class RabbitMQAdapter {
@@ -11,6 +13,7 @@ class RabbitMQAdapter {
 
   constructor(connection?: ConnectionInfoQueueDTO) {
     if (connection) this.connectionInfo = { ...connection }
+    if (!this.connectionInfo) throw Error('No data for connection')
     this.connect(this.connectionInfo)
   }
 
@@ -28,7 +31,6 @@ class RabbitMQAdapter {
       console.log('RabbitMQ has connected')
     } catch (error) {
       console.log('**** error [rabbitmq] : ', error)
-      throw error
     }
   }
 
